@@ -1,0 +1,379 @@
+<!-- Sajjad Ali -->
+<!-- 023-19-0100 -->
+<!-- JQuery Assignment -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/38e57366c8.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Table Pagination</title>
+
+    <style>
+      body {
+        padding: 40px 20px 5px 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <th scope="col">Avatar</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">City</th>
+          <th scope="col">Country</th>
+        </thead>
+        <tbody id="body"></tbody>
+      </table>
+    </div>
+    <div
+      class="btn-toolbar justify-content-end"
+      role="toolbar"
+      aria-label="Toolbar with button groups"
+    >
+      <div
+        id="btns"
+        class="btn-group"
+        role="group"
+        aria-label="First group"
+      ></div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script>
+      let arr = [
+        new Person(
+          `<img src = "./pics/boy.png" width=50px height=30px></img>`,
+          "Sajjad",
+          "Male",
+          "sajjad.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/man.png" width=50px height=30px></img>`,
+          "Sajan",
+          "Male",
+          "sajan.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/student.png" width=50px height=30px></img>`,
+          "Ali",
+          "Male",
+          "ali.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/bald.png" width=50px height=30px></img>`,
+          "Sahir",
+          "Male",
+          "sahir.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/extinguisher.png" width=50px height=30px></img>`,
+          "Neha Kukreja",
+          "Female",
+          "neha.bscsf19@iba-suk.edu.pk",
+          "03093615967",
+          "Pir Jo Goth",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/woman.png" width=50px height=30px></img>`,
+          "Kanchan",
+          "Female",
+          "kanchan.bscsf19@iba-suk.edu.pk",
+          "03093615906",
+          "Pir Jo Goth",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/woman(1).png" width=50px height=30px></img>`,
+          "Mariyam",
+          "Female",
+          "mariyam.bsmf20@iba-suk.edu.pk",
+          "03223615967",
+          "Chakwal",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/man(1).png" width=50px height=30px></img>`,
+          "Ammar",
+          "Male",
+          "ammar.bscsf19@iba-suk.edu.pk",
+          "030112376523",
+          "Sukkur",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/woman(2).png" width=50px height=30px></img>`,
+          "Munaima",
+          "Female",
+          "munaima.bscsf19@iba-suk.edu.pk",
+          "03093615967",
+          "Pir Jo Goth",
+          "Pakistan"
+        ),
+
+        new Person(
+          `<img src = "./pics/boy.png" width=50px height=30px></img>`,
+          "Mohammad Ali Awan",
+          "Male",
+          "mali.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Shahdadpur",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/man.png" width=50px height=30px></img>`,
+          "Zargul",
+          "Male",
+          "zargul.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/student.png" width=50px height=30px></img>`,
+          "Jameel",
+          "Male",
+          "jameel.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/bald.png" width=50px height=30px></img>`,
+          "Sahil Raza",
+          "Male",
+          "sahil.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/extinguisher.png" width=50px height=30px></img>`,
+          "Neha Kishore Kumari",
+          "Female",
+          "neha.bscsf19@iba-suk.edu.pk",
+          "03093615907",
+          "Pir Jo Goth",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/woman.png" width=50px height=30px></img>`,
+          "Pooja",
+          "Female",
+          "pooja.bscsf19@iba-suk.edu.pk",
+          "03093615906",
+          "Pir Jo Goth",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/woman(1).png" width=50px height=30px></img>`,
+          "Mahnaz",
+          "Female",
+          "mahnaz.bsmf20@iba-suk.edu.pk",
+          "03223615967",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/man(1).png" width=50px height=30px></img>`,
+          "Manesh",
+          "Male",
+          "manesh.bscsf19@iba-suk.edu.pk",
+          "030112376523",
+          "Sukkur",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/woman(2).png" width=50px height=30px></img>`,
+          "Aisha Khan",
+          "Female",
+          "aisha.bscsf19@iba-suk.edu.pk",
+          "03093615967",
+          "Pir Jo Goth",
+          "Pakistan"
+        ),
+
+        new Person(
+          `<img src = "./pics/boy.png" width=50px height=30px></img>`,
+          "Sajjad Raza",
+          "Male",
+          "sajjad.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/man.png" width=50px height=30px></img>`,
+          "Sajan Ahmed",
+          "Male",
+          "sajan.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/student.png" width=50px height=30px></img>`,
+          "Ali Mohsin",
+          "Male",
+          "ali.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/bald.png" width=50px height=30px></img>`,
+          "Sahir Ali Raza",
+          "Male",
+          "sahir.bscsf19@iba-suk.edu.pk",
+          "03401234567",
+          "Hyderabad",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/extinguisher.png" width=50px height=30px></img>`,
+          "Neha Kukreja",
+          "Female",
+          "neha.bscsf19@iba-suk.edu.pk",
+          "03093615967",
+          "Pir Jo Goth",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/woman.png" width=50px height=30px></img>`,
+          "Kanchan",
+          "Female",
+          "kanchan.bscsf19@iba-suk.edu.pk",
+          "03093615906",
+          "Pir Jo Goth",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/woman(1).png" width=50px height=30px></img>`,
+          "Mariyam",
+          "Female",
+          "mariyam.bsmf20@iba-suk.edu.pk",
+          "03223615967",
+          "Chakwal",
+          "Pakistan"
+        ),
+        new Person(
+          `<img src = "./pics/man(1).png" width=50px height=30px></img>`,
+          "Akil",
+          "Male",
+          "akil.bscsf19@iba-suk.edu.pk",
+          "030112376523",
+          "Clumbo",
+          "Srilanka"
+        ),
+        new Person(
+          `<img src = "./pics/woman(2).png" width=50px height=30px></img>`,
+          "Munaima",
+          "Female",
+          "munaima.bscsf19@iba-suk.edu.pk",
+          "03093615967",
+          "Pir Jo Goth",
+          "Pakistan"
+        ),
+      ];
+
+      arr.sort();
+      let len = arr.length < 10 ? arr.length : 10;
+
+      $(document).ready(() => {
+        populate();
+
+        let n = Math.ceil(arr.length / 10.0);
+        $("#btns").append(
+          "<button type='button' class='btn btn-primary'>&lt;&lt;</button>"
+        );
+        for (let i = 1; i <= n; i++)
+          $("#btns").append(
+            `<button id = ${i} type='button' class='btn btn-primary'>${i}</button>`
+          );
+
+        $("#btns").append(
+          "<button type='button' class='btn btn-primary'>&gt;&gt;</button>"
+        );
+
+        $("button:last-child").click(rightClick);
+        $("button:first-child").click(backClick);
+
+        for (let i = 1; i <= n; i++) $(`#${i}`).click(btnClick);
+      });
+
+      function populate() {
+        $("#body").html("");
+        let start = len % 10 == 0 ? len - 10 : len - (len % 10);
+
+        for (let i = start; i < len && i < arr.length; i++) {
+          let tr = `<tr>
+                        <td>${arr[i].avatar}</td>
+                        <td>${arr[i].name}</td>
+                        <td>${arr[i].gender}</td>
+                        <td>${arr[i].email}</td>
+                        <td>${arr[i].phone}</td>
+                        <td>${arr[i].city}</td>
+                        <td>${arr[i].country}</td>
+                    </tr>
+                    `;
+          $("#body").append(tr);
+        }
+      }
+
+      function backClick(event) {
+        if (len <= 10) return;
+        len -= len % 10 == 0 ? 10 : len % 10;
+        populate();
+      }
+
+      function rightClick(event) {
+        if (len >= arr.length) return;
+        len += len + 10 < arr.length ? 10 : arr.length - len;
+        populate();
+      }
+
+      function btnClick(event) {
+        len = +$(event.target).text() * 10;
+        populate();
+      }
+
+      function Person(avatar, name, gender, email, phone, city, country) {
+        this.avatar = avatar;
+        this.name = name;
+        this.gender = gender;
+        this.email = email;
+        this.phone = phone;
+        this.city = city;
+        this.country = country;
+      }
+    </script>
+  </body>
+</html>
